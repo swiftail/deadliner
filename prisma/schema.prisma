@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model DeadlineEntry {
+  id          String   @id @default(uuid())
+  subject     String
+  title       String
+  datetime    DateTime
+  link        String?
+  description String?
+  reminders   DeadlineReminder[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model DeadlineReminder {
+  id         Int       @id @default(autoincrement())
+  title      String
+  deadline   DeadlineEntry      @relation(fields: [deadlineId], references: [id])
+  deadlineId String
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
