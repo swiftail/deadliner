@@ -26,7 +26,7 @@ export function formatDeadlineEntry(entry: DeadlineEntry, showId = false) {
         data.push(`${description}`)
     }
     if (link) {
-        data.push(`${link}`)
+        data.push(`<a href="${link}">ссылка</a>`)
     }
 
     return data.join(`\n`)
