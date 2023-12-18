@@ -56,7 +56,7 @@ export async function defineJobs() {
                 for (const deadline of unremindedDeadlines) {
                     await bot.telegram.sendMessage(
                         config.config.bot.notifications.chat_id,
-                        'Скоро дедлайн! (триггер: ' + rem.name + ')' + dayjs(deadline.datetime).fromNow() + ':\n' + formatDeadlineEntry(deadline, false),
+                        'Скоро дедлайн!\n' + formatDeadlineEntry(deadline, false),
                         {
                             parse_mode: 'HTML'
                         }
